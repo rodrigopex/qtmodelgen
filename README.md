@@ -3,6 +3,10 @@ Qt Model Generator
 
 This is a tool designed for helping people to create Qt Models. All the Q_PROPERTY code is generated based on a json description file.
 
+Why use it?
+-----------
+For avoiding the repeatable fact of coding the Qt Models and its properties all the time we need it.
+
 How to use?
 -----------
 The user needs to execute two steps:
