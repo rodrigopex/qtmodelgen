@@ -1,0 +1,8 @@
+{
+	"name": "ExampleModel",
+	"properties" : [
+		{"name": "prop1", "type": "QString", "operations": "rwn"},
+		{"name": "prop2", "type": "int", "operations": "nwr"},
+		{"name": "prop3", "type": "float *", "operations": "n"}
+	]
+}

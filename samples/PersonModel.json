@@ -1,0 +1,9 @@
+{
+	"name": "Person",
+	"properties" : [
+		{"name": "name", "type": "QString", "operations": "rwn"},
+		{"name": "Age", "type": "int", "operations": "nwr"},
+		{"name": "id", "type": "double", "operations": "r"},
+		{"name": "children", "type": "QList<Person*> *", "operations": "rwnf"}
+    ]
+}
