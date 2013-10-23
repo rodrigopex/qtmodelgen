@@ -13,14 +13,14 @@ The user needs to execute two steps:
 - Create a json file that describes all the model's properties;
 - Run the tool using the json description files.
 
-Bellow you can see an example of a model. We are modelling a hipotetical person.
+Bellow you can see an example of a model. We are modelling a hypothetical person.
 
 ```json
 {
 	"name": "Person",
 	"properties" : [
 		{"name": "name", "type": "QString", "operations": "rwn"},
-		{"name": "Age", "type": "int", "operations": "nwr"},
+		{"name": "age", "type": "int", "operations": "nwr"},
 		{"name": "id", "type": "double", "operations": "r"},
 		{"name": "children", "type": "QList<Person*> *", "operations": "rwnf"}
     ]
@@ -66,12 +66,12 @@ For generating the code for the PersonModel.json already described, you have to 
 > python qtmodelgen.py PersonModel.json 
 Generating code for: Person.hpp...[OK]
 ```
-Done! Your brand new model was generated successfully! Bellow, you the result:
+Done! Your brand new model was generated successfully! Bellow, you can see the result:
 
 ```c++
 
 /*
- * Person.hpp
+ * Person.h
  *
  *  Created on:
  *      Author:
@@ -85,7 +85,7 @@ Done! Your brand new model was generated successfully! Bellow, you the result:
 class Person: public QObject {
     Q_OBJECT
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
-    Q_PROPERTY(int Age READ Age WRITE setAge NOTIFY AgeChanged)
+    Q_PROPERTY(int age READ age WRITE setAge NOTIFY ageChanged)
     Q_PROPERTY(double id READ id)
     Q_PROPERTY(QList<Person*> * children READ children WRITE setChildren NOTIFY childrenChanged FINAL)
 
@@ -100,13 +100,13 @@ public:
             emit nameChanged();
         }
     }
-    int Age() {
-        return m_Age;
+    int age() {
+        return m_age;
     }
     void setAge(int newAge){
-        if(m_Age != newAge) {
-            m_Age = newAge;
-            emit AgeChanged();
+        if(m_age != newAge) {
+            m_age = newAge;
+            emit ageChanged();
         }
     }
     double id() {
@@ -129,12 +129,12 @@ public:
 
 signals:
     void nameChanged();
-    void AgeChanged();
+    void ageChanged();
     void childrenChanged();
 
 private:
     QString m_name;
-    int m_Age;
+    int m_age;
     double m_id;
     QList<Person*> * m_children;
 
@@ -154,9 +154,10 @@ Generating code for: Car.h.hpp..[OK]
 ```
 Known limitation
 ----------------
+* It requires Python 2.7.x;
 * The includes are not performed automatically. You still need to do all includes for each model file;
 * All the generated methods are inline. There are no cpp files, just the hpp;
-* There are no garantees for running this using Python 3.x. I've tested with Python2.7.4 and GCC version 4.2.1.
+* There are no guarantees for running this using Python 3.x. I've tested with Python2.7.4 and GCC version 4.2.1.
 
 Contact
 -------
